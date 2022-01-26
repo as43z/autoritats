@@ -19,13 +19,13 @@ export function createCertificate(userPubKey: RSAPublicKey, serverPrivateKey: RS
 
 export function certificateFromSafeJson(safeCertificate: any): Certificate | undefined{
     logger.info(`Parsing Certificate`);
-    var {safePublicKey, serverSignature} = safeCertificate;
+    var {publicKey, serverSignature} = safeCertificate;
 
-    if (typeof safePublicKey === 'undefined' || typeof serverSignature === 'undefined'){
+    if (typeof publicKey === 'undefined' || typeof serverSignature === 'undefined'){
         logger.error('Properties might be undefined');
         return undefined;
     } else {
-        const pubKey: RSAPublicKey | undefined = rsaPubKeyFromHex(safePublicKey);
+        const pubKey: RSAPublicKey | undefined = rsaPubKeyFromHex(publicKey);
         if (typeof pubKey === 'undefined'){
             logger.error('PubKey is undefined');
             return undefined;

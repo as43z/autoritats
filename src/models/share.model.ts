@@ -48,21 +48,25 @@ export class Certificate{
 }
 
 export class ShareManager{
-    private _shares: Map<Certificate, string> = new Map<Certificate, string>();
+    private _shares: Map<bigint, string> = new Map<bigint, string>();
 
     constructor(){
 
     }
 
     getShare(userCertificate: Certificate): string | undefined{
-        return this._shares.get(userCertificate);
+        const logger: Logger = new Logger();
+        logger.info(this._shares.has(userCertificate.getPubKey().getExpE()))
+        return this._shares.get(userCertificate.getPubKey().getExpE());
     }
 
     addShare(userCertificate: Certificate, share: string): Boolean {
-        if(this._shares.has(userCertificate))
+        const logger: Logger = new Logger();
+        logger.info(this._shares.has(userCertificate.getPubKey().getExpE()))
+        if(this._shares.has(userCertificate.getPubKey().getExpE()))
             return false;
         else{
-            this._shares.set(userCertificate, share);
+            this._shares.set(userCertificate.getPubKey().getExpE(), share);
             return true;
         }
     }

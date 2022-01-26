@@ -13,7 +13,7 @@ app.use(cors());            // To connect Front and Back servers.
 
 
 // set environmental variables (app.get('name of the variable'))
-app.set('PORT', process.env.PORT || 8080); // then perform app.get('PORT') if(process.env.PORT exists) --> PORT = process.env.PORT; IF NOT: PORT = 8080.
+app.set('PORT', process.env.PORT || 9090); // then perform app.get('PORT') if(process.env.PORT exists) --> PORT = process.env.PORT; IF NOT: PORT = 8080.
 app.set('MODE', 'dev');
 
 // routes. EntryPoint @ip/api/{whatever}

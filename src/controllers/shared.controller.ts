@@ -16,7 +16,7 @@ export async function addShare(req:Request, res:Response) {
 }
 
 export async function getShare(req:Request, res:Response) {
-    const {safeUserCertificate} = req.body;
+    const safeUserCertificate = req.body;
     const userCertificate: Certificate | undefined = certUtils.certificateFromSafeJson(safeUserCertificate);
     const share: string | undefined = shareManager.getShare(userCertificate!);
     if(typeof share !== 'undefined')
